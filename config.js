@@ -12,6 +12,8 @@ if (process.env.NODE_ENV ===  'dev'){
     urlDB = `mongodb+srv://briandevitaok:${process.env.MONGO_DB_PASS}@development.jwaya24.mongodb.net/?retryWrites=true&w=majority`;
 }
 
+process.env.URLDB = urlDB;
+
 
 
 
