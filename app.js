@@ -1,23 +1,20 @@
 
-
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose') 
-const app = require('./routes/usuario')
-const port = 5000
-
-
-
+const app = require('express')();
+const port = process.env.PORT || 5000;
+require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
 
-app.use("/usuario",require("./routes/usuario"))
+app.use(require("./routes/usuario"))
 
 
 
-mongoose.connect('mongodb://localhost:27017/cafe', (err, res)=>{
+mongoose.connect(`mongodb+srv://briandevitaok:${process.env.MONGO_DB_PASS}@development.jwaya24.mongodb.net/?retryWrites=true&w=majority`,(err, res)=>{
     if (err ) throw err;
     
     console.log('Mongo conexion exitosa');
