@@ -15,7 +15,7 @@ app.use(require("./routes/usuario"))
 
 
 
-mongoose.connect(urlDB,(err, res)=>{
+mongoose.connect(`mongodb+srv://briandevitaok:12345@development.jwaya24.mongodb.net/?retryWrites=true&w=majority`,(err, res)=>{
     if (err ) throw err;
     
     console.log('Mongo conexion exitosa');
