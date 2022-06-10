@@ -4,12 +4,13 @@ const Usuario = require('../models/usuario')
 const bcrypt = require('bcrypt')
 const usuario = require('../models/usuario')
 const _ = require('underscore')
+const {verificaToken, verificaAdminRole } = require('../middlewares/autenticacion')
 
 
 
+app.get('/usuario', verificaToken, (req,res)=>{
+    
 
-app.get('/usuario', (req,res)=>{
-  
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
@@ -40,7 +41,10 @@ app.get('/usuario', (req,res)=>{
     
 })
 
-app.post('/post', (req, res) =>{
+app.post('/post', [verificaToken, verificaAdminRole],(req, res) =>{
+    
+    
+    
     let body = req.body;
 
     let usuario = new Usuario({
@@ -74,7 +78,7 @@ app.post('/post', (req, res) =>{
 })
 
 
-app.put('/update/:id', (req,res)=>{
+app.put('/update/:id',verificaToken, (req,res)=>{
     
     let id = req.params.id 
 
@@ -106,7 +110,7 @@ app.put('/update/:id', (req,res)=>{
 
 
 
-app.delete('/delete/:id', (req,res)=>{
+app.delete('/delete/:id',verificaToken, (req,res)=>{
    
     let id = req.params.id;
 

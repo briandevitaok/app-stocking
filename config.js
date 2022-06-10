@@ -18,3 +18,13 @@ if ( process.env.NODE_ENV === 'dev'){
 
 module.exports = urlDB;
 
+
+//Vencimient odel token
+//60 SEGUNDOS
+//60 MINUTOS
+//24 HORAS
+//30 DIAS
+// CADUCIDAD_TOKEN = 
+
+//seed de autenticacion
+// SECRET_TOKEN = 
